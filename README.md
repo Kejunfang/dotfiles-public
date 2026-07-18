@@ -158,6 +158,27 @@ mappings must be enabled manually:
 Ghostty is installed automatically. Oh My Zsh and Powerlevel10k are not yet
 managed by `setup.sh`.
 
+Create `~/.config/ghostty/config` with the same appearance and terminal
+shortcuts as this computer:
+
+```ini
+# Treat the macOS Option key as Alt/Meta.
+macos-option-as-alt = true
+
+theme = Breadog
+
+# Command + Delete: delete the current command line.
+keybind = super+backspace=text:\x15
+
+# Shift + Enter: insert a newline in supported interactive terminal apps.
+keybind = shift+enter=text:\x1b\r
+```
+
+On macOS, the key labelled Delete is reported as `backspace`, and `super` means
+Command. Restart Ghostty after saving the file. The Shift + Enter binding sends
+Escape followed by Enter, which tools with multiline prompt support interpret
+as a newline instead of submitting the input.
+
 1. Install [Oh My Zsh](https://ohmyz.sh/#install).
 2. Install Powerlevel10k:
 
