@@ -200,14 +200,79 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 ```
 
-Current preferences:
+After LazyVim starts, explicitly install both **Neo-tree** and **fzf-lua**. Run
+`:LazyExtras`, enable `editor.neo-tree` and `editor.fzf`, then restart Neovim
+and run `:Lazy sync`. The resulting `~/.config/nvim/lazyvim.json` should contain:
 
-- Colorscheme: `catppuccin-mocha`.
-- In Neo-tree, press `shift + h` to show hidden files.
-- Use the LazyVim `fzf-lua` extra for file search.
-- Configure `fzf-lua` with `hidden = true` to include dotfiles.
-- Configure `no_ignore = true` only when files ignored by `.gitignore` should
-  also appear.
+```json
+{
+  "extras": [
+    "lazyvim.plugins.extras.editor.fzf",
+    "lazyvim.plugins.extras.editor.neo-tree"
+  ]
+}
+```
+
+The file may contain other fields or extras; keep them. In Neo-tree, press
+`shift + h` to show hidden files.
+
+#### Change the colorscheme
+
+This computer currently uses Neovim's `default` colorscheme. Set a colorscheme
+in `~/.config/nvim/lua/plugins/colorscheme.lua`:
+
+```lua
+return {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "default",
+    },
+  },
+}
+```
+
+Replace `default` with the desired colorscheme name. If that colorscheme is not
+built into Neovim or already provided by LazyVim, add its plugin in the same
+file. For example, to use Catppuccin Mocha:
+
+```lua
+return {
+  { "catppuccin/nvim", name = "catppuccin" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin-mocha",
+    },
+  },
+}
+```
+
+Restart Neovim and run `:Lazy sync` after changing the plugin specification.
+
+#### Configure fzf-lua
+
+Create `~/.config/nvim/lua/plugins/fzf.lua`. The following matches this
+computer: file search includes dotfiles as well as files ignored by
+`.gitignore` or `.ignore`.
+
+```lua
+return {
+  {
+    "ibhagwan/fzf-lua",
+    opts = {
+      files = {
+        hidden = true,
+        no_ignore = true,
+      },
+    },
+  },
+}
+```
+
+Restart Neovim and run `:Lazy sync`. Use `<space><space>` to search files. Set
+`no_ignore = false` if ignored files should remain excluded while dotfiles stay
+visible.
 
 ## Conda
 
