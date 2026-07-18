@@ -34,8 +34,10 @@ From this repository, run:
 The script:
 
 1. Installs or updates the tools and applications declared in `Brewfile`.
-2. Initializes Conda for Zsh.
-3. Creates or updates the `dev` Conda environment from `environment.yml`.
+2. Installs the Visual Studio Code extensions in `vscode-extensions.txt`.
+3. Initializes Conda for Zsh.
+4. Creates or updates the `dev` Conda environment from `environment.yml`.
+5. Installs the Playwright browsers used by the Python environment.
 
 It can be run again. The Conda update does not prune packages that exist only
 on the current machine.
@@ -52,10 +54,11 @@ conda activate dev
 
 ### Command-line tools
 
-- Shell and terminal workflow: Fish, tmux, fzf.
+- Shell and terminal workflow: tmux, fzf.
 - Editing and search: Neovim, ripgrep, fd, tree-sitter.
-- Development: Git, GitHub CLI, Node.js, pipx.
-- Documents and downloads: Pandoc, curl, wget.
+- Development: Git, GitHub CLI, Node.js, OpenJDK, CMake, pipx.
+- Media, archives, and documents: FFmpeg, p7zip, Pandoc.
+- Downloads: curl, wget.
 
 ### Applications
 
@@ -67,8 +70,25 @@ conda activate dev
 - Communication: Discord.
 - Python environment manager: Miniconda.
 
-Installing an application does not configure its login, extensions, shortcuts,
-macOS permissions, or cloud synchronization.
+The VS Code application and the extensions listed in `vscode-extensions.txt` are
+installed automatically. Application login, settings, shortcuts, macOS
+permissions, and cloud synchronization are not configured automatically.
+
+### Java
+
+OpenJDK is installed automatically. Confirm that macOS can find it:
+
+```bash
+java -version
+/usr/libexec/java_home
+```
+
+If `/usr/libexec/java_home` cannot find the Homebrew JDK, register it once:
+
+```bash
+sudo ln -sfn "$(brew --prefix openjdk)/libexec/openjdk.jdk" \
+  /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
 
 ## Manual setup
 
@@ -197,7 +217,8 @@ Mac, Conda is located under `/opt/homebrew/Caskroom/miniconda/base`.
 `setup.sh` runs `conda init zsh` and creates or updates the environment declared
 in `environment.yml`. The current `dev` environment uses Python 3.12 and includes
 data science, notebook, formatting, computer vision, and browser automation
-packages.
+packages. It also downloads the Chromium, Firefox, and WebKit browser binaries
+required by Playwright.
 
 Do not install project dependencies into `base`. Homebrew can treat its managed
 Miniconda base directory as read-only, and separate environments are easier to
