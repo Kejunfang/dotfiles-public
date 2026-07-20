@@ -131,6 +131,7 @@ Application shortcuts:
 | `cmd + shift + \` | Zen Browser |
 | `cmd + opt + shift + t` | Terminal |
 | `cmd + opt + shift + d` | Discord |
+| `cmd + opt + shift + o` | Obsidian |
 | `cmd + opt + shift + n` | Notes |
 | `cmd + opt + shift + r` | Reminders |
 | `cmd + opt + shift + c` | Calendar |
