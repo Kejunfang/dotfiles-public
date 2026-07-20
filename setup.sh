@@ -10,6 +10,11 @@ fi
 
 brew bundle --file "$repo_dir/Brewfile"
 
+tmux_config="$HOME/.tmux.conf"
+if [[ ! -f "$tmux_config" ]] || ! grep -Fqx 'set -g mouse on' "$tmux_config"; then
+  printf '\nset -g mouse on\n' >> "$tmux_config"
+fi
+
 while IFS= read -r extension; do
   [[ -z "$extension" ]] || code --install-extension "$extension"
 done < "$repo_dir/vscode-extensions.txt"

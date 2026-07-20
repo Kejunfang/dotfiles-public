@@ -34,10 +34,11 @@ From this repository, run:
 The script:
 
 1. Installs or updates the tools and applications declared in `Brewfile`.
-2. Installs the Visual Studio Code extensions in `vscode-extensions.txt`.
-3. Initializes Conda for Zsh.
-4. Creates or updates the `dev` Conda environment from `environment.yml`.
-5. Installs the Playwright browsers used by the Python environment.
+2. Enables mouse support in tmux via `~/.tmux.conf`.
+3. Installs the Visual Studio Code extensions in `vscode-extensions.txt`.
+4. Initializes Conda for Zsh.
+5. Creates or updates the `dev` Conda environment from `environment.yml`.
+6. Installs the Playwright browsers used by the Python environment.
 
 It can be run again. The Conda update does not prune packages that exist only
 on the current machine.
