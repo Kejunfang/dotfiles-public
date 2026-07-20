@@ -66,7 +66,7 @@ conda activate dev
 - Terminals and editors: Ghostty, Visual Studio Code.
 - Browsers: Google Chrome, Zen Browser.
 - AI tools: Claude Code, Codex, [LM Studio](https://lmstudio.ai/).
-- Productivity: Raycast, Numi, Obsidian.
+- Productivity: LibreOffice, Raycast, Numi, Obsidian.
 - Utilities: Karabiner-Elements.
 - Communication: Discord.
 - Python environment manager: Miniconda.
