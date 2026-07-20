@@ -126,7 +126,8 @@ Application shortcuts:
 | Shortcut | Action |
 | --- | --- |
 | `cmd + opt + shift + esc` | Open Raycast |
-| `cmd + shift + \` | Web browser |
+| `cmd + opt + shift + ]` | Google Chrome |
+| `cmd + shift + \` | Zen Browser |
 | `cmd + opt + shift + t` | Terminal |
 | `cmd + opt + shift + d` | Discord |
 | `cmd + opt + shift + n` | Notes |
